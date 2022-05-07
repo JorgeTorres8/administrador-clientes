@@ -1,0 +1,28 @@
+{
+  "clientes": [
+    {
+      "nombre": "Chipi ACTUALIZADO",
+      "empresa": "Chipi Client",
+      "email": "correo@correo.com",
+      "telefono": "45487541212",
+      "notas": "Chipi chiupi todos chisps?",
+      "id": 1
+    },
+    {
+      "nombre": "Prueba1",
+      "empresa": "gsg",
+      "email": "correo3@correo.com",
+      "telefono": "154564",
+      "notas": "f",
+      "id": 2
+    },
+    {
+      "nombre": "Jorge",
+      "empresa": "Mundo Lentes",
+      "email": "correo1@correo.com",
+      "telefono": "542152848451",
+      "notas": "Lentes para ti ok?",
+      "id": 3
+    }
+  ]
+}
