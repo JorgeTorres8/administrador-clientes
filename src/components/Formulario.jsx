@@ -1,23 +1,23 @@
 import { Formik, Form, Field} from "formik"
-import { useNavigate } from "react-router-dom" //171
-import * as Yup from 'yup' //166
-import Alertas from "./Alertas" //166
-import Spinner from './Spinner' //182
+import { useNavigate } from "react-router-dom" 
+import * as Yup from 'yup' 
+import Alertas from "./Alertas" 
+import Spinner from './Spinner' 
 
 const Formulario = ({cliente, cargando}) => {
-    const navigate = useNavigate(); //171
+    const navigate = useNavigate(); 
 
-    const nuevoClienteSchema = Yup.object().shape({ //166
+    const nuevoClienteSchema = Yup.object().shape({ 
         nombre: Yup.string()
                             .min(3, 'El nombre es muy corto')
                             .max(20, 'El nombre es muy largo')
                             .required('El Nombre del Cliente es Obligatorio'),
-        empresa: Yup.string() //167
+        empresa: Yup.string() 
                             .required('El Nombre de Empresa es Obligatorio'),
-        email: Yup.string() //167
+        email: Yup.string() 
                             .email('Email no Válido')
                             .required('El Email es Obligatorio'),
-        telefono: Yup.number() //167
+        telefono: Yup.number() 
                             .positive('Número no Válido')
                             .integer('Número no Válido')
                             .typeError('Número no válido')
@@ -25,11 +25,11 @@ const Formulario = ({cliente, cargando}) => {
 
     const handleSubmit = async (valores) => {
         
-        try { //170
+        try { 
             let respuesta
             if(cliente.id) {
                 
-                const url = `http://localhost:4000/clientes/${cliente.id}`
+                const url = `${import.meta.env.VITE_API_URL}/${cliente.id}` 
                 respuesta = await fetch(url, {
                     method: 'PUT',
                     body: JSON.stringify(valores),
@@ -40,7 +40,7 @@ const Formulario = ({cliente, cargando}) => {
 
             } else {
                 
-                const url = 'http://localhost:4000/clientes'
+                const url = import.meta.env.VITE_API_URL
                 respuesta = await fetch(url, {
                     method: 'POST',
                     body: JSON.stringify(valores),
@@ -50,7 +50,7 @@ const Formulario = ({cliente, cargando}) => {
                 }) 
             }
             await respuesta.json()
-            navigate('/clientes'); //171
+            navigate('/clientes'); 
         } catch (error) {
             console.log(error);
         }
@@ -73,9 +73,9 @@ const Formulario = ({cliente, cargando}) => {
                     notas: cliente?.notas ?? "",
                 }}
                 enableReinitialize={true}
-                onSubmit= { async (values, {resetForm}) => { //165
+                onSubmit= { async (values, {resetForm}) => { 
                     await handleSubmit(values);
-                    resetForm();//171
+                    resetForm();
                 }}
                 validationSchema={nuevoClienteSchema}
             >
@@ -93,7 +93,7 @@ const Formulario = ({cliente, cargando}) => {
                             type="text"
                             className="mt-2 block w-full bs-gray-50"
                             placeholder="Nombre del Cliente"
-                            name="nombre"//164
+                            name="nombre"
                         />
                         
                         {errors.nombre && touched.nombre ? (
@@ -111,7 +111,7 @@ const Formulario = ({cliente, cargando}) => {
                             type="text"
                             className="mt-2 block w-full bs-gray-50"
                             placeholder="Empresa del Cliente"
-                            name="empresa"//164
+                            name="empresa"
                         />
                         {errors.empresa && touched.empresa ? (
                             <Alertas>{errors.empresa}</Alertas>
@@ -128,7 +128,7 @@ const Formulario = ({cliente, cargando}) => {
                             type="text"
                             className="mt-2 block w-full bs-gray-50"
                             placeholder="Email del Cliente"
-                            name="email"//164
+                            name="email"
                         />
                         {errors.email && touched.email ? (
                             <Alertas>{errors.email}</Alertas>
@@ -145,7 +145,7 @@ const Formulario = ({cliente, cargando}) => {
                             type="tel"
                             className="mt-2 block w-full bs-gray-50"
                             placeholder="Teléfono del Cliente"
-                            name="telefono"//164
+                            name="telefono"
                         />
                         {errors.telefono && touched.telefono ? (
                             <Alertas>{errors.telefono}</Alertas>
@@ -163,7 +163,7 @@ const Formulario = ({cliente, cargando}) => {
                             type="textarea"
                             className="mt-2 block w-full bs-gray-50 h-40"
                             placeholder="Notas del Cliente"
-                            name="notas"//164
+                            name="notas"
                         />
                         
                     </div>
@@ -183,8 +183,8 @@ const Formulario = ({cliente, cargando}) => {
   )
 }
 
-Formulario.defaultProps = { //180
+Formulario.defaultProps = { 
     cliente: {},
-    cargando: false //182
+    cargando: false 
 }
 export default Formulario

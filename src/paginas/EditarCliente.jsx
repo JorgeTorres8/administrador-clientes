@@ -3,15 +3,15 @@ import { useParams } from 'react-router-dom'
 import Formulario from '../components/Formulario'
 
 
-const EditarCliente = () => { //179
-    const [cliente, setCliente] = useState({})//176
-    const [cargando, setCargando] = useState(true)//178
-    const { id } = useParams() //175
+const EditarCliente = () => {
+    const [cliente, setCliente] = useState({})
+    const [cargando, setCargando] = useState(true)
+    const { id } = useParams()
 
-    useEffect(() => { //176
+    useEffect(() => {
         const obtenerClienteAPI = async () => {
             try {
-                const url = `http://localhost:4000/clientes/${id}`
+                const url = `${import.meta.env.VITE_API_URL}/${id}`
          
                 const respuesta = await fetch(url)
                 const resultado = await respuesta.json()
@@ -32,9 +32,9 @@ const EditarCliente = () => { //179
             {cliente?.nombre ? (
                 <Formulario 
                     cliente={cliente}
-                    cargando={cargando} //182
+                    cargando={cargando} 
                 />
-            ): <p>Cliente ID no válido</p>}
+            ): <p className='font-black text-4xl my-40 text-center'>Cliente ID no válido</p>}
 
         </>
     )

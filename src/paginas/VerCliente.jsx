@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import Spinner from "../components/Spinner"; //178
+import Spinner from "../components/Spinner";
 
-const VerCliente = () => { //175
+const VerCliente = () => {
 
-    const [cliente, setCliente] =  useState({});//176
-    const [cargando, setCargando] = useState(true); //178
+    const [cliente, setCliente] =  useState({});
+    const [cargando, setCargando] = useState(true);
 
-    const { id } = useParams(); //175
+    const { id } = useParams();
     
-    useEffect(() => { //176
+    useEffect(() => {
       const obtenerClienteApi = async () => {
         try {
-          const url = `http://localhost:4000/clientes/${id}`;
+          const url = `${import.meta.env.VITE_API_URL}/${id}`;
           const respuesta = await fetch(url);
           const resultado = await respuesta.json();
           setCliente(resultado);
@@ -38,7 +38,7 @@ const VerCliente = () => { //175
             <p className="mt-3">Información del Cliente</p>
 
             {cliente.nombre && (
-              <p className="text-4xl text-gray-600 mt-10">
+              <p className="text-2xl text-gray-600 mt-10">
                 <span className="text-gray-800 uppercase font-bold">Cliente: </span>
                 {cliente.nombre}
               </p>

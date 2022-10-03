@@ -1,8 +1,8 @@
-import { Outlet, Link, useLocation} from "react-router-dom" //157
+import { Outlet, Link, useLocation} from "react-router-dom"
 
 const Layout = () => {
 
-  const location = useLocation(); //161
+  const location = useLocation();
   const urlActual = location.pathname;
 
   return (

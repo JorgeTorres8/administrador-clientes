@@ -1,4 +1,4 @@
-import Formulario from "../components/Formulario" //162
+import Formulario from "../components/Formulario"
 
 const NuevoCliente = () => {
     return (
