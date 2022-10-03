@@ -50,7 +50,7 @@ const Formulario = ({cliente, cargando}) => {
                 }) 
             }
             await respuesta.json()
-            navigate('/clientes'); 
+            navigate('/'); 
         } catch (error) {
             console.log(error);
         }
@@ -85,7 +85,7 @@ const Formulario = ({cliente, cargando}) => {
                 <Form className="mt-10">
                     <div className="mb-4">
                         <label
-                            className="text-gray-800"
+                            className="text-gray-800 border-b-4 border-sky-700 block"
                             htmlFor="nombre"
                         >Nombre:</label>
                         <Field 
@@ -103,7 +103,7 @@ const Formulario = ({cliente, cargando}) => {
 
                     <div className="mb-4">
                         <label
-                            className="text-gray-800"
+                            className="text-gray-800 border-b-4 border-sky-700 block"
                             htmlFor="empresa"
                         >Empresa:</label>
                         <Field 
@@ -120,7 +120,7 @@ const Formulario = ({cliente, cargando}) => {
 
                     <div className="mb-4">
                         <label
-                            className="text-gray-800"
+                            className="text-gray-800 border-b-4 border-sky-700 block"
                             htmlFor="email"
                         >E-mail:</label>
                         <Field 
@@ -137,7 +137,7 @@ const Formulario = ({cliente, cargando}) => {
 
                     <div className="mb-4">
                         <label
-                            className="text-gray-800"
+                            className="text-gray-800 border-b-4 border-sky-700 block"
                             htmlFor="telefono"
                         >Telefono:</label>
                         <Field 
@@ -154,7 +154,7 @@ const Formulario = ({cliente, cargando}) => {
 
                     <div className="mb-4">
                         <label
-                            className="text-gray-800"
+                            className="text-gray-800 border-b-4 border-sky-700 block"
                             htmlFor="notas"
                         >Notas:</label>
                         <Field 
